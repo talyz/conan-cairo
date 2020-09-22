@@ -180,7 +180,10 @@ class CairoConan(ConanFile):
             with tools.environment_append(env_build.vars):
                 self.run('PKG_CONFIG_PATH=%s NOCONFIGURE=1 ./autogen.sh' % pkg_config_path)
                 env_build.pic = self.options.fPIC
-                env_build.configure(args=configure_args, pkg_config_paths=[pkg_config_path])
+                try:
+                    env_build.configure(args=configure_args, pkg_config_paths=[pkg_config_path])
+                except:
+                    self.output.info(open('config.log', errors='backslashreplace').read())
                 env_build.make()
                 env_build.install()
 
