@@ -183,7 +183,7 @@ class CairoConan(ConanFile):
                 try:
                     env_build.configure(args=configure_args, pkg_config_paths=[pkg_config_path])
                 except:
-                    self.output.info(open('config.log', errors='backslashreplace').read())
+                    self.output.info(tools.load('config.log'))
                 env_build.make()
                 env_build.install()
 
