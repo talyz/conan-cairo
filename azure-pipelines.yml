@@ -4,6 +4,7 @@ resources:
       type: github
       name: bincrafters/templates
       endpoint: github
+      ref: ericLemanissier-patch-1
 
 extends:
   template: .ci/azure.yml@templates
@@ -13,3 +14,4 @@ extends:
     enableAppleClangBuilds: true
     splitByBuildTypes: "true"
     requireMoreDiskSpace: "true"
+    appleClangVersions: "9.1,10,11"
