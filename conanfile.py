@@ -63,6 +63,8 @@ class CairoConan(ConanFile):
         if tools.os_info.is_windows and not tools.get_env("CONAN_BASH_PATH"):
             self.build_requires('msys2/20190524')
         self.build_requires("pkgconf/1.7.3")
+        if not self.is_msvc:
+            self.build_requires('automake/1.16.2')
 
     @property
     def is_msvc(self):
